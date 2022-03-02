@@ -227,8 +227,12 @@ class Home extends StatelessWidget {
               "${localizations.doubleQuoteSelect('cabriolet')}",
               "${localizations.pluralInString(1)}",
               "${localizations.selectInString('he')}",
-              "${localizations.selectWithPlaceholder('male', 'ice cream')}",
-              "${localizations.selectWithPlaceholder('female', 'chocolate')}",
+              "${localizations.pluralThenString(1, "Dart")}",
+              "${localizations.pluralThenString(2, "Flutter")}",
+              "${localizations.multiplePlurals(1)}",
+              "${localizations.multiplePlurals(10)}",
+              "${localizations.pluralInSelect(1, "apple")}",
+              "${localizations.pluralInSelect(3, "banana")}",
             ]);
           },
         ),
@@ -275,6 +279,12 @@ class Home extends StatelessWidget {
               "${localizations.doubleQuoteSelect('cabriolet')}",
               "${localizations.pluralInString(1)}",
               "${localizations.selectInString('he')}",
+              "${localizations.pluralThenString(1, "Dart")}",
+              "${localizations.pluralThenString(2, "Flutter")}",
+              "${localizations.multiplePlurals(1)}",
+              "${localizations.multiplePlurals(10)}",
+              "${localizations.pluralInSelect(1, "apple")}",
+              "${localizations.pluralInSelect(3, "banana")}",
             ]);
           },
         ),
@@ -659,12 +669,30 @@ void main() {
     }
   },
 
-  "selectWithPlaceholder": "Indeed, {gender, select, male {he likes {preference}} female {she likes {preference}} other {they like {preference}}}!",
-  "@selectWithPlaceholder": {
-    "description": "A select message with prefix, suffix strings, and a placeholder.",
+  "pluralThenString": "Indeed, {count, plural, =1 {she likes} other {they like}} {project} a lot!",
+  "@pluralThenString": {
     "placeholders": {
-      "gender": {},
-      "preference": {}
+      "count": {},
+      "project": {
+        "type": "String"
+      }
+    }
+  },
+
+  "multiplePlurals": "There {count, plural, =1{is} other{are}} {count} world{count, plural, =1{} other{s}}.",
+  "@multiplePlurals": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+
+  "pluralInSelect": "I can see {fruit, select, apple{{count, plural, =0{no apple} =1{one apple} other{some apples}}} banana{{count, plural, =0{no banana} =1{one banana} other{{count} bananas}}}}.",
+  "@pluralInSelect": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "fruit": {}
     }
   }
 }
@@ -715,7 +743,10 @@ void main() {
   "singleQuoteSelect": "{vehicleType, select, sedan{ES - Sedan's elegance} cabriolet{ES - Cabriolet' acceleration} truck{ES - truck's heavy duty} other{ES - Other's mirrors!}}",
   "doubleQuoteSelect": "{vehicleType, select, sedan{ES - Sedan has \"elegance\"} cabriolet{ES - Cabriolet has \"acceleration\"} truck{ES - truck is \"heavy duty\"} other{ES - Other have \"mirrors\"!}}",
   "pluralInString": "ES - Oh, she found {count, plural, =1 {ES - 1 item} other {ES - all {count} items} }ES - !",
-  "selectInString": "ES - Indeed, {gender, select, male {ES - he likes} female {ES - she likes} other {ES - they like} } ES - Flutter!"
+  "selectInString": "ES - Indeed, {gender, select, male {ES - he likes} female {ES - she likes} other {ES - they like} } ES - Flutter!",
+  "pluralThenString": "ES - Indeed, {count, plural, =1 {ES - she likes} other {ES - they like} } ES - {project} a lot!",
+  "multiplePlurals": "ES - There {count, plural, =1{ES - is} other{ES - are}} {count} world{count, plural, =1{ - ES} other{s - ES}}.",
+  "pluralInSelect": "ES - I can see {fruit, select, apple{{count, plural, =0{ES - no apple} =1{ES - one apple} other{ES - some apples}}} banana{{count, plural, =0{ES - no banana} =1{ES - one banana} other{ES - {count} bananas}}}}."
 }
 ''';
 
